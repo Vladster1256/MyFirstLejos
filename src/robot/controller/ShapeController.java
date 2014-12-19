@@ -2,59 +2,63 @@ package robot.controller;
 
 import robot.model.DrawingRobot;
 
-
 public class ShapeController
 {
 	DrawingRobot myRobot;
-	
+
 	public ShapeController()
 	{
 		myRobot = new DrawingRobot();
+		
 	}
 
 	public void start()
 	{
-		drawCircle();
-		drawSquare();
-		drawTriangle();
-		drawHexagon();
-		drawOctagon();
-		completedShapes();
-		endProgram();
+		{
+			drawCircle();
+			drawSquare();
+			drawTriangle();
+			drawHexagon();
+			drawOctagon();
+			completedShapes();
+			endProgram();
+		}
 	}
-	
+
 	public void drawCircle()
 	{
-		myRobot.drawShape(1,0);
+		myRobot.drawCircle();
 	}
-	
+
 	public void drawSquare()
 	{
-		myRobot.drawShape(4, 2);
+		myRobot.drawSquare();
 	}
-	
+
 	public void drawTriangle()
 	{
-		myRobot.drawShape(3, 2);
+		myRobot.drawTriangle();
 	}
-	
+
 	public void drawHexagon()
 	{
-		myRobot.drawShape(6,3/2);
+		myRobot.drawHexagon();
 	}
-	
+
 	public void drawOctagon()
 	{
-		myRobot.drawShape(8,3/2);
+		myRobot.drawOctagon();
 	}
-	
+
 	public void completedShapes()
 	{
 		myRobot.spinRightFast();
 	}
+
 	public void endProgram()
 	{
+		myRobot.stop();
 		System.out.println("I Haz Drawn Shapes, good day :)");
-		
+
 	}
 }
