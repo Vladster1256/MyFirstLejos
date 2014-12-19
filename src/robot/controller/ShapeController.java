@@ -16,6 +16,10 @@ public class ShapeController
 	{
 		drawCircle();
 		drawSquare();
+		drawTriangle();
+		drawHexagon();
+		drawOctagon();
+		completedShapes();
 		endProgram();
 	}
 	
@@ -27,6 +31,26 @@ public class ShapeController
 	public void drawSquare()
 	{
 		myRobot.drawShape(4, 2);
+	}
+	
+	public void drawTriangle()
+	{
+		myRobot.drawShape(3, 2);
+	}
+	
+	public void drawHexagon()
+	{
+		myRobot.drawShape(6,3/2);
+	}
+	
+	public void drawOctagon()
+	{
+		myRobot.drawShape(8,3/2);
+	}
+	
+	public void completedShapes()
+	{
+		myRobot.spinRightFast();
 	}
 	public void endProgram()
 	{
