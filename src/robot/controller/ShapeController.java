@@ -9,20 +9,20 @@ public class ShapeController
 	public ShapeController()
 	{
 		myRobot = new DrawingRobot();
-		
+
 	}
 
 	public void start()
 	{
-		{
-			drawCircle();
-			drawSquare();
-			drawTriangle();
-			drawHexagon();
-			drawOctagon();
-			completedShapes();
-			endProgram();
-		}
+
+		// drawCircle();
+		drawSquare();
+		// drawTriangle();
+		// drawHexagon();
+		// drawOctagon();
+		// completedShapes();
+		endProgram();
+
 	}
 
 	public void drawCircle()

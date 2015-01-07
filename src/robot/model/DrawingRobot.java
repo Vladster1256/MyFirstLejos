@@ -1,5 +1,6 @@
 package robot.model;
 
+import robot.controller.DrivingController;
 import lejos.nxt.Motor;
 import lejos.util.Delay;
 
@@ -8,6 +9,7 @@ public class DrawingRobot
 {
 	int angle = 0;
 	int sidesDrawn = 0;
+	DrivingController myDriving;
 
 	public DrawingRobot()
 	{
@@ -26,26 +28,60 @@ public class DrawingRobot
 		return currentAngle;
 	}
 
+	
+	
 	public void turnRight()
 	{
-		Motor.B.forward();
+		
+		Motor.A.setSpeed(10);
+		Motor.B.setSpeed(360);
+		Motor.B.rotate(angle*2);
+		Motor.A.rotate(-angle*2);
+		System.out.println("Turning Right");
+		Delay.msDelay(1000);
+		Motor.A.stop();
+		Motor.B.stop();
+		System.out.println("Stopping");
 	}
-
-	public void driveForward()
-	{
-		Motor.A.backward();
-		Motor.B.forward();
-	}
-
+	
 	public void driveBackward()
 	{
-		Motor.A.forward();
+		Motor.A.backward();
 		Motor.B.backward();
+		Delay.msDelay(1000);
+		Motor.A.stop();
+		Motor.B.stop();
+	}
+	
+	public void stopRobot()
+	{
+		Motor.A.stop();
+		Motor.B.stop();
+	}
+	
+	public void delayRobot()
+	{
+		Delay.msDelay(1000);
+	}
+	
+	public void driveForward()
+	{
+		Motor.A.forward();
+		Motor.B.forward();
+		System.out.println("Going Forward");
+		Delay.msDelay(1000);
+		Motor.A.stop();
+		Motor.B.stop();
+		System.out.println("Stopping");
 	}
 
 	public void turnLeft()
 	{
-		Motor.A.forward();
+		Motor.A.rotate(angle*2);
+		Motor.B.rotate(-angle*2);
+		Delay.msDelay(1000);
+		Motor.A.stop();
+		Motor.B.stop();
 	}
 
 	public void spinRightFast()
@@ -69,7 +105,7 @@ public class DrawingRobot
 		System.out.println("Drawning Cirlce");
 		sidesDrawn = 0;
 		// Draw Circle
-		Motor.A.setSpeed(60);
+		Motor.A.setSpeed(360);
 		Motor.B.setSpeed(360);
 		Motor.B.forward();
 		Delay.msDelay(5000);
@@ -77,24 +113,20 @@ public class DrawingRobot
 
 	public void drawSquare()
 	{
-		System.out.println("Drawning Square");
+		System.out.println("Drawing Square");
 		angle = 90;
-		Motor.A.setSpeed(60);
-		Motor.B.setSpeed(60);
+		Motor.A.setSpeed(360);
+		Motor.B.setSpeed(360);
 		sidesDrawn = 0;
 		// Draw Square
-		for (; sidesDrawn < 4; sidesDrawn++)
+		for (int sidesDrawn = 0 ; sidesDrawn < 4; sidesDrawn++)
 		{
+			
 			driveForward();
-			Delay.msDelay(1000 * 2);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
 			turnRight();
-			Delay.msDelay(500);
 			Motor.A.stop();
 			Motor.B.stop();
-			Delay.msDelay(1000);
+			
 		}
 	}
 
@@ -163,5 +195,13 @@ public class DrawingRobot
 			Motor.B.stop();
 			Delay.msDelay(1000);
 		}
+	}
+	public void setAngle(int angle)
+	{
+		this.angle = angle;
+	}
+	public int getAngle()
+	{
+		return angle;
 	}
 }
