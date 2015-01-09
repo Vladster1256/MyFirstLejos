@@ -28,60 +28,48 @@ public class DrawingRobot
 		return currentAngle;
 	}
 
-	
-	
 	public void turnRight()
 	{
-		
-		Motor.A.setSpeed(10);
+
+		Motor.A.setSpeed(360);
 		Motor.B.setSpeed(360);
-		Motor.B.rotate(angle*2);
-		Motor.A.rotate(-angle*2);
+		Motor.B.rotate(angle * 2);
+		Motor.A.rotate(-angle * 2);
 		System.out.println("Turning Right");
-		Delay.msDelay(1000);
-		Motor.A.stop();
-		Motor.B.stop();
-		System.out.println("Stopping");
 	}
-	
+
 	public void driveBackward()
 	{
 		Motor.A.backward();
 		Motor.B.backward();
-		Delay.msDelay(1000);
-		Motor.A.stop();
-		Motor.B.stop();
+		System.out.println("Going Backwards");
 	}
-	
+
 	public void stopRobot()
 	{
-		Motor.A.stop();
-		Motor.B.stop();
-	}
-	
-	public void delayRobot()
-	{
-		Delay.msDelay(1000);
-	}
-	
-	public void driveForward()
-	{
-		Motor.A.forward();
-		Motor.B.forward();
-		System.out.println("Going Forward");
-		Delay.msDelay(1000);
 		Motor.A.stop();
 		Motor.B.stop();
 		System.out.println("Stopping");
 	}
 
+	public void delayRobot(int multiplyer)
+	{
+		Delay.msDelay(1000 * multiplyer);
+		System.out.println("Delaying");
+	}
+
+	public void driveForward()
+	{
+		Motor.A.forward();
+		Motor.B.forward();
+		System.out.println("Going Forward");
+	}
+
 	public void turnLeft()
 	{
-		Motor.A.rotate(angle*2);
-		Motor.B.rotate(-angle*2);
-		Delay.msDelay(1000);
-		Motor.A.stop();
-		Motor.B.stop();
+		Motor.A.rotate(angle * 2);
+		Motor.B.rotate(-angle * 2);
+		System.out.println("turning left");
 	}
 
 	public void spinRightFast()
@@ -90,7 +78,6 @@ public class DrawingRobot
 		Motor.B.setSpeed(360);
 		Motor.A.forward();
 		Motor.B.backward();
-		Delay.msDelay(3000);
 	}
 
 	public void stop()
@@ -100,33 +87,53 @@ public class DrawingRobot
 		Motor.C.stop();
 	}
 
+	public void setMotorSpeed(String whichMotor, int speed)
+	{
+		whichMotor = "";
+		if (whichMotor.equals("A"))
+		{
+			whichMotor = "A";
+		} else if (whichMotor.equals("B"))
+		{
+			whichMotor = "B";
+		} else if (whichMotor.equals("C"))
+		{
+			whichMotor = "C";
+		}
+
+		Motor.whichMotor.setSpeed(speed);
+
+	}
+
 	public void drawCircle()
 	{
-		System.out.println("Drawning Cirlce");
+		System.out.println("Drawing Cirlce");
 		sidesDrawn = 0;
 		// Draw Circle
-		Motor.A.setSpeed(360);
-		Motor.B.setSpeed(360);
-		Motor.B.forward();
-		Delay.msDelay(5000);
+		setMotorSpeed("A", 360);
+		setMotorSpeed("B", 10);
+		driveForward();
+		delayRobot(5);
+		System.out.println("Drawn " + sidesDrawn + " side(s)");
 	}
 
 	public void drawSquare()
 	{
 		System.out.println("Drawing Square");
 		angle = 90;
-		Motor.A.setSpeed(360);
-		Motor.B.setSpeed(360);
+		setMotorSpeed("A", 360);
+		setMotorSpeed("B", 360);
 		sidesDrawn = 0;
 		// Draw Square
-		for (int sidesDrawn = 0 ; sidesDrawn < 4; sidesDrawn++)
+		for (int sidesDrawn = 0; sidesDrawn < 4; sidesDrawn++)
 		{
-			
+
 			driveForward();
+			delayRobot(1);
 			turnRight();
-			Motor.A.stop();
-			Motor.B.stop();
-			
+			delayRobot(1);
+			System.out.println("Drawn " + sidesDrawn + " side(s)");
+
 		}
 	}
 
@@ -138,18 +145,13 @@ public class DrawingRobot
 		Motor.B.setSpeed(60);
 		sidesDrawn = 0;
 		// Draw Triangle
-		for (; sidesDrawn < 3; sidesDrawn++)
+		for (int sidesDrawn = 0; sidesDrawn < 3; sidesDrawn++)
 		{
 			driveForward();
-			Delay.msDelay(1000 * 2);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
 			turnRight();
-			Delay.msDelay(500);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
+			System.out.println("Drawn " + sidesDrawn + " side(s)");
 		}
 	}
 
@@ -160,18 +162,13 @@ public class DrawingRobot
 		Motor.A.setSpeed(60);
 		Motor.B.setSpeed(60);
 		sidesDrawn = 0;
-		for (; sidesDrawn < 6; sidesDrawn++)
+		for (int sidesDrawn = 0; sidesDrawn < 6; sidesDrawn++)
 		{
 			driveForward();
-			Delay.msDelay(1000 * 3 / 2);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
 			turnRight();
-			Delay.msDelay(600);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
+			System.out.println("Drawn " + sidesDrawn + " side(s)");
 		}
 	}
 
@@ -182,24 +179,21 @@ public class DrawingRobot
 		Motor.A.setSpeed(60);
 		Motor.B.setSpeed(60);
 		sidesDrawn = 0;
-		for (; sidesDrawn < 8; sidesDrawn++)
+		for (int sidesDrawn = 0; sidesDrawn < 8; sidesDrawn++)
 		{
 			driveForward();
-			Delay.msDelay(1000 * 3 / 2);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
 			turnRight();
-			Delay.msDelay(500);
-			Motor.A.stop();
-			Motor.B.stop();
-			Delay.msDelay(1000);
+			delayRobot(1);
+			System.out.println("Drawn " + sidesDrawn + " side(s)");
 		}
 	}
+
 	public void setAngle(int angle)
 	{
 		this.angle = angle;
 	}
+
 	public int getAngle()
 	{
 		return angle;
