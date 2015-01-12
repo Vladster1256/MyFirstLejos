@@ -15,11 +15,11 @@ public class ShapeController
 	public void start()
 	{
 
-		// drawCircle();
+		drawCircle();
 		drawSquare();
-		// drawTriangle();
-		// drawHexagon();
-		// drawOctagon();
+		drawTriangle();
+		drawHexagon();
+		drawOctagon();
 		completedShapes();
 		endProgram();
 
