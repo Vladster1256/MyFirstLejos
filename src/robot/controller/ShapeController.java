@@ -20,7 +20,7 @@ public class ShapeController
 		// drawTriangle();
 		// drawHexagon();
 		// drawOctagon();
-		// completedShapes();
+		completedShapes();
 		endProgram();
 
 	}

@@ -92,28 +92,28 @@ public class DrawingRobot
 		whichMotor = "";
 		if (whichMotor.equals("A"))
 		{
-			whichMotor = "A";
-		} else if (whichMotor.equals("B"))
-		{
-			whichMotor = "B";
-		} else if (whichMotor.equals("C"))
-		{
-			whichMotor = "C";
+			Motor.A.setSpeed(speed);
 		}
-
-		Motor.whichMotor.setSpeed(speed);
-
+		else if (whichMotor.equals("B"))
+		{
+			Motor.B.setSpeed(speed);
+		}
+		else if (whichMotor.equals("C"))
+		{
+			Motor.C.setSpeed(speed);
+		}
 	}
 
 	public void drawCircle()
 	{
-		System.out.println("Drawing Cirlce");
+		System.out.println("Drawing Circle");
 		sidesDrawn = 0;
 		// Draw Circle
 		setMotorSpeed("A", 360);
 		setMotorSpeed("B", 10);
 		driveForward();
 		delayRobot(5);
+		sidesDrawn ++;
 		System.out.println("Drawn " + sidesDrawn + " side(s)");
 	}
 
@@ -187,15 +187,5 @@ public class DrawingRobot
 			delayRobot(1);
 			System.out.println("Drawn " + sidesDrawn + " side(s)");
 		}
-	}
-
-	public void setAngle(int angle)
-	{
-		this.angle = angle;
-	}
-
-	public int getAngle()
-	{
-		return angle;
 	}
 }
